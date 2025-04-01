@@ -1,0 +1,268 @@
+/* Réinitialise marges (margin) et espacements (padding)*/
+* {/*pour uniformiser le rendu entre navigateurs */
+    margin: 0;/* 1px 3px; /* Supprime l'espace autour des éléments */
+    padding: 0; /* Supprime l'espace intérieur des éléments */
+
+   font-family: Baskerville, serif;
+}
+
+/* Corps de la page : couleur de texte, fond et espacement*/
+
+body {
+    margin-left: 0;
+    padding: 0;
+    font-family: Baskerville, serif;
+    line-height: 1.6; /* espacement vertical entre les lignes*/
+    color: black; /* Définit la couleur du texte principale */
+    background-color: #ece5dd;
+}
+
+/* En-tête centré avec fond coloré et texte blanc */
+.main-header {
+    /* text-align: center; /* Centre le texte horizontalement */
+    background-color: rgb(138, 22, 57); /* Fond rouge paris pour l'en-tête */
+    padding: 10px; /* Espace intérieur autour du contenu */
+    color: #ece5dd; /* Texte en blanc */
+}
+
+/* Titre principal en grand format */
+.main-title {
+	text-decoration: underline; /* Adds an underline */
+    text-decoration-color: #333; /* Sets the underline color to dark (you can use any dark color like #000 for black or #333 for dark gray) */
+    font-size: 2em; /* Taille du texte doublée */
+    margin-bottom: 10px; /* Espace sous le titre */
+	margin-left: 10%; /* Décalage de 20px à gauche */
+
+}
+.sous-title{
+	margin-left: 10%; /* Décalage de 20px à gauche */
+}
+
+label {
+ display: none;
+}
+
+.menu {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 30px;
+ background-color:#ece5dd;
+}
+#toggle{
+	display: none;
+}
+.menu a {
+ width: 10%;
+ height: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-decoration: none;
+ color: black;
+ font-weight: bold;
+}
+.menu a:hover {
+ background-color:rgb(138, 22, 57);
+ color: black;
+ text-decoration: underline;
+ border-left: 1.5px solid black; /* Red border on the left */
+ border-right: 1.5px solid black; /* Red border on the right */
+}
+
+
+
+#context {
+    border: 1px solid black;
+    padding: 10px 0 10px 20px;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0.24);
+    border-radius: 3px 20px 20px 20px;
+    box-shadow: #555555 3px 3px 3px;
+}
+
+@counter-style themes { /* creation d'un compteur de liste à puce */
+    system:fixed;
+    symbols: 🍰☕ 📊📈 🗺️🚜 🏢💼 📜✍️ ;
+    suffix: " ";
+}
+.indicateurs{
+    margin-top: 20px;
+    /*margin-left: 50px;*/
+}
+.indicateurs > ul > li {
+    display: list-item;
+    list-style-type: themes;
+    margin-left: 50px;
+
+}
+.indicateurs > ul {
+    /*margin-left: 30px;*/
+    list-style-position: outside;
+    
+}
+
+.indica {
+    border: 3px solid #a1a0a0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color:rgba(0, 0, 0, 0.24);
+    min-width: 600px;
+    border-radius: 15px;
+    padding-left: 10px;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+    margin: 3px 10px;
+}
+
+.indica > figure > figcaption  {
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+figure > ul {
+    list-style-position: inside;
+}
+.bloc{
+   display: block;
+    margin: 5px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.h2 {
+    text-decoration:  underline;
+
+}
+.img-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#moad{
+    width:0;
+}
+
+
+
+
+
+
+.section-text {
+    margin-bottom:  10px; /* espace entre chaque texte */
+}
+/* ------------------------------------------footer---------------------------------------------------------------------------------------- */
+/* Pied de page centré avec fond sombre */
+.footer {
+    text-align: center; /* Centre le texte */
+    margin-top: 20px; /* Espace au-dessus du pied de page */
+    padding: 15px; /* Espace intérieur */
+    background-color: #333; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    font-size: 0.9em; /* Taille du texte légèrement réduite */
+}
+@media all and (max-width: 991px) {
+    nav {
+        height: 60px;
+    }
+    .menu {
+        display: none;
+    }
+    .menu a{
+        width: 50%;
+        
+    }
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: black;
+        cursor: pointer;
+    }
+
+    .image-figure {
+        flex: 0 1 100%; /* Sur les petits écrans, chaque image prend 100% de la largeur */
+    }
+    .image img {
+        width: 100%;  /* L'image prend toute la largeur de son conteneur */
+        height: auto; /* La hauteur est ajustée automatiquement pour préserver les proportions */
+    }
+
+    #toggle:checked + .menu {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255,255,255,0.20);
+        backdrop-filter:blur(8px);
+        width:100%;
+        height: 100vh;
+    }
+    #toggle:checked + .menu a {
+        padding-bottom: 1em;
+    }
+    .image{
+        display: flex;
+        flex-wrap: wrap; /* Allows images to move to the next line */
+        gap: 20px; /* Remove space between images */
+        justify-content: center; /* Center the images */
+    }
+    .indicateurs{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .container{
+        display: flex;
+        /*justify-content: space-around;*/
+        /*align-items: center;*/
+        flex-wrap: wrap;
+        border:2px solid black;
+    }
+
+    .indica {
+        border: 3px solid black;
+        display: flex;
+        flex: 0 1 100%;
+        min-width: 0;
+        flex-wrap: wrap;
+        background-color:rgba(0, 0, 0, 0.24);
+        border-radius: 1px;
+        padding-left: 10px;
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+        margin: 3px 10px;
+    }
+    @counter-style themes { /* creation d'un compteur de liste à puce */
+        system:fixed;
+        symbols:🍰☕ 📊📈 🗺️🚜 🏢💼 📜✍️;
+        suffix:" ";
+    }
+    .indicateurs > ul{
+        /*list-style-type: themes;*/
+        list-style-position: inside;
+
+
+    }
+    .indicateurs > ul > li {
+        list-style-type: themes;
+        margin-left: 0px;
+
+    }
+    .bloc{
+        display: block;
+        margin: 5px;
+        margin-left: 5px;
+        border-radius: 3px;
+        max-width:250px;
+    }
+    .h2{
+        display: inline;
+    }
+}

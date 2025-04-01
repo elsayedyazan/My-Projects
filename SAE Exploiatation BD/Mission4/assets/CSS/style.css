@@ -1,0 +1,226 @@
+* {/*pour uniformiser le rendu entre navigateurs*/
+  margin: 0; /* Supprime l'espace autour des éléments */
+  padding: 0; /* Supprime l'espace intérieur des éléments */
+ font-family: Baskerville, serif;
+}
+body {/*pour la couleur de fond et la font de toute la page*/
+    font-family: Baskerville, serif;
+    line-height: 1.6; /* espacement vertical entre les lignes*/
+    color: black; /* Définit la couleur du texte principale */
+    background-color: #ece5dd;
+
+}
+
+header {/*entete , block rouge pour mettre en lumiere*/
+    text-align: left; /* Centre le texte horizontalement */
+    background-color: rgb(138, 22, 57); /* Fond rouge paris-cité pour l'en-tête */
+    padding: 10px;  /*Espace intérieur autour du contenu */
+    color: white;  /*Texte en blanc*/
+}
+
+nav{/*pour que le menu nav nous suive quand on scroll*/
+    position: sticky;
+    top:0px;
+	background-color:white;
+	border-bottom: 1px solid black;
+}
+
+.main-title {/*le style du texte titre + l'ecartement*/
+   
+    text-decoration-color: #333; 
+    font-size: 2em; 
+    margin-bottom: 10px; 
+    margin-left: 10%;
+}
+
+.sous-title{
+	margin-left: 10%; 
+}
+
+ul{
+	padding-left:4em;
+}
+h2{
+	text-decoration:underline;
+	text-decoration-color: lightsteelblue;
+}
+/*---------------------------menu hamburguer--------------------------------------*/
+
+label { /*cache le label par default tant qu'on est sur format pc */
+ display: none;
+}
+
+.menu { /* menu avec des éléments centrés (horizontale et verticale) sur un fond blanc.*/
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 30px;
+ background-color:white;
+}
+#toggle{
+	display: none;
+}
+.menu a { /*texte liens*/
+ width: 10%;
+ height: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-decoration: none;
+ color: black;
+ font-weight: bold;
+}
+.menu a:hover { /*pour changer le style en survol*/
+ background-color:rgb(138, 22, 57);
+ color: black;
+ text-decoration: underline;
+ border-left: 1.5px solid black; 
+ border-right: 1.5px solid black; 
+}
+/* ---------------------------------responsive------------------------------------------------------------- */
+@media all and (max-width: 991px) { /*Responsive qui s'adapte au format telephone */
+ nav {
+ height: 60px;
+ }
+ .menu {
+ display: none;
+ }
+ .menu a{
+ width: 50%;
+ 
+ 
+ }
+ label {/*affiche l'emoji du menu burger centré */
+	
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 40px;
+ color: black;
+ cursor: pointer;
+ }
+ 
+.image-figure {
+    flex: 0 1 100%; /* Sur les petits écrans, chaque image prend 100% de la largeur */
+}
+.image img {
+    width: 100%;  /* L'image prend toute la largeur de son conteneur */
+    height: auto; /* La hauteur est ajustée automatiquement pour préserver les proportions */
+}
+ 
+ #toggle:checked + .menu {/*quand le menu burger est activé on affiche les liens vers les pages des autres mission , avec un fond opaque*/
+ display: flex;
+ flex-direction: column;
+ background-color: rgba(255,255,255,0.20);
+ backdrop-filter:blur(8px);
+ width:100%;
+ height: 100vh;
+ }
+ #toggle:checked + .menu a {
+ padding-bottom: 1em;
+ }
+ .image{/*disposer plusieurs images dans un conteneur en les organisant de manière fluide*/
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; /* Remove space between images */
+    justify-content: center; /* Center the images */
+}
+  
+}
+/*---------------------------fin menu hamburguer--------------------------------------*/
+.rajouter {
+	display: flex;
+    flex-wrap: wrap;
+	justify-content:flex-start;
+	align-items: flex-start;
+	gap: 10px;
+
+}
+.swag{
+    margin: 15px;
+	margin-left: 50px;
+}
+
+article{/*pour quon ai un block stylisé qui se differencie du decor*/
+    padding: 20px; /* pour éloigner le texte des bords */
+    margin: 20px 50px 0px 50px; /* Espace au-dessus de chaque section */
+    background-color: #ffffff; /* Fond blanc */
+    border-radius: 5px; /* Coins légèrement arrondis */
+}
+
+
+.image{/*pour que les images soit correctement positionné*/
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px; 
+    justify-content: center; 
+}
+
+.image-figure{
+    flex: 0 1 50%; 
+    text-align: center; 
+}
+.image-caption{/*Pour les description d'image*/
+    font-size: 1em; /* Taille de police légèrement plus petite pour la légende */
+    color: #555; /* Couleur gris clair pour le texte de la légende */
+    margin-top: 5px; /* Espace entre l'image et la légende */
+	font-weight: bold;
+}
+
+
+/* ---------------------------------------------tableau ------------------------------*/
+
+
+.info-table {/* Tableau avec bordures pour chaque cellule */
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 15px; 
+    border: 1px solid #ddd; 
+}
+
+.info-table th, .info-table td {/*pour une meilleur lisibilité, alignement et espacement*/
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    text-align: left;
+}
+
+.info-table th {/*couleur pour casser la monotomnie */
+    background-color:lightsteelblue ; 
+}
+
+.info-table td {/*/*couleur pour casser la monotomnie */
+    background-color: lightgray; 
+}
+
+.info-table a {/*enleve le style de base du lien*/
+    color: inherit; 
+    text-decoration: none;
+}
+
+
+.info-table a:hover {/*style en survol , ca fait joli*/
+ background-color:rgb(100,149,237);
+ color: black;
+ text-decoration: underline;
+ border-left: 1.5px ;
+ border-right: 1.5px ;
+}
+/* ---------------------------------------------fin tableau ------------------------------*/
+
+section/*encore un autre block qui va se differencier du decor*/
+{
+	padding: 20px; /* pour éloigner le texte des bords */
+    margin: 20px 50px 0px 50px; /* Espace au-dessus de chaque section */
+    background-color: #ffffff; /* Fond blanc */
+    border-radius: 5px; 
+}
+
+
+footer { /*pied de page avec le lien vers pariscité*/
+    text-align: center; /* Centre le texte */
+    margin-top: 20px; /* Espace au-dessus du pied de page */
+    padding: 15px; /* Espace intérieur */
+    background-color: #333; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    font-size: 0.9em; /* Taille du texte légèrement réduite */
+}
