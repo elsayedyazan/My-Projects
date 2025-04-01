@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/main/style.css" rel="stylesheet" type="text/css">
+    <title>Report</title>
+</head>
+<body>
+<header>
+    <div class="container-fluid" id="navbar-container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">SAE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="report.html">Report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="timeline.html">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!------------------------------------------------------>
+    <section class="sauvegarde-section mb-5">
+        <h2 class="text-center mb-4"><i class="bi bi-folder2-open"></i> Forme et Lieu de Sauvegarde</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="assets/img/sauvegarde.png" alt="Sauvegarde VM" class="img-fluid rounded border-light">
+            </div>
+            <div class="col-md-6">
+                <p>Les fichiers de la machine virtuelle sont sauvegardés sur un disque dur local, avec les éléments suivants :</p>
+                <ul>
+                    <li><span class="fw-bold">Fichier disque virtuel :</span> <code>.vdi</code>, <code>.vmdk</code>, etc.</li>
+                    <li><span class="fw-bold">Fichiers de configuration :</span><code>.vbox</code>, <code>.vmx</code>.</li>
+                    <li><span class="fw-bold">Snapshots :</span> Sauvegardes d'états intermédiaires.</li>
+                </ul>
+                <p>Le choix d'un SSD améliore les performances, tandis qu'un disque externe peut être utilisé pour des sauvegardes supplémentaires.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="choix-techniques-section mb-5">
+        <h2 class="text-center mb-4"><i class="bi bi-gear-fill"></i> Choix Techniques</h2>
+        <div class="accordion accordion-flush" id="technicalChoicesAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="headingOS">
+                    <button class="accordion-button text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOS" aria-expanded="true" aria-controls="collapseOS">
+                        Choix du Système d’Exploitation
+                    </button>
+                </h3>
+                <div id="collapseOS" class="accordion-collapse collapse show" aria-labelledby="headingOS" data-bs-parent="#technicalChoicesAccordion">
+                    <div class="accordion-body">
+                        <p>Nous avons choisi <span class="fw-bold">Ubuntu 22.04</span> pour sa légèreté, sa gratuité et sa compatibilité avec notre environnement de développement.</p>
+                        <img src="assets/img/ubuntu.png" alt="Ubuntu" class="img-fluid rounded border-light">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="headingResources">
+                    <button class="accordion-button collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResources" aria-expanded="false" aria-controls="collapseResources">
+                        Configuration des Ressources
+                    </button>
+                </h3>
+                <div id="collapseResources" class="accordion-collapse collapse" aria-labelledby="headingResources" data-bs-parent="#technicalChoicesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><span class="fw-bold">Processeur :</span> 2 cœurs pour un bon compromis entre performance et disponibilité des ressources.</li>
+                            <li><span class="fw-bold">Mémoire vive :</span> 4 Go pour garantir une exécution fluide.</li>
+                            <li><span class="fw-bold">Stockage :</span> Disque dynamique de 20 Go pour économiser de l'espace disque.</li>
+                            <li><span class="fw-bold">Réseau :</span> Mode NAT pour un accès facile à Internet.</li>
+                        </ul>
+                        <img src="assets/img/resources.png" alt="Configuration Ressources" class="img-fluid rounded border-light mt-3">
+                        <img src="assets/img/resources2.png" alt="Configuration Ressources" class="img-fluid rounded border-light mt-3">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="headingNetwork">
+                    <button class="accordion-button collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNetwork" aria-expanded="false" aria-controls="collapseNetwork">
+                        Configuration Réseau
+                    </button>
+                </h3>
+                <div id="collapseNetwork" class="accordion-collapse collapse" aria-labelledby="headingNetwork" data-bs-parent="#technicalChoicesAccordion">
+                    <div class="accordion-body">
+                        <p>Le mode <span class="fw-bold">ACCÈS PAR PONT</span> a été (ensuit) choisi pour permettre à la machine virtuelle de se connecter à Internet sans configuration réseau complexe
+                        et afin de poster le serveur hébergeant le site en ligne.</p>
+                        <img src="assets/img/network.png" alt="Configuration Réseau" class="img-fluid rounded border-light">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!------------------------------------------------------------------creation des utilisateur -------------------------------->
+    <section class="choix-techniques-section mb-5">
+        <h2 class="text-center mb-4"><i class="bi bi-person-fill"></i> Création des Utilisateurs</h2>
+        <div class="accordion accordion-flush" id="usersCreationAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="headingUser1">
+                    <button class="accordion-button text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUser1" aria-expanded="true" aria-controls="collapseUser1">
+                        Configuration des Utilisateurs
+                    </button>
+                </h3>
+                <div id="collapseUser1" class="accordion-collapse collapse show" aria-labelledby="headingUser1" data-bs-parent="#usersCreationAccordion">
+                    <div class="accordion-body">
+                        <p>Nous avons rencontré un problème à cause de la norme de Linux concernant la nomination des utilisateurs donc il fallait utiliser l'option <span>--allow-bad-names</span> :</p>
+                        <ul>
+                            <li> <span class="fw-bold">Création</span> d’un compte administrateur :
+                                <ul><li>sudo adduser <span class="fw-bold">--allow-bad-names</span> admin_Gr101_BinomeG4</li>
+                                    <li>sudo usermod -aG sudo admin_Gr101_BinomeG4</li></ul>
+                            </li>
+
+                            <li><span class="fw-bold">Création de deux utilisateurs</span>  BinomeYY_1 et BinomeYY_2 :
+                                <ul>
+                                    <li>sudo adduser BinomeG4_1</li>
+                                    <li>sudo adduser BinomeG4_2</li>
+                                </ul>
+                            </li>
+                            <li><span class="fw-bold">Création</span> d’un groupe BinomeYY:
+                                <ol>
+                                    <li>sudo groupadd BinomeG4</li>
+                                    <li>sudo usermod -aG BinomeG4 BinomeG4_1</li>
+                                    <li>sudo usermod -aG BinomeG4 BinomeG4_2</li>
+                                </ol>
+                            </li>
+                            <li><span class="fw-bold">Personnalisation</span> d’une invite de commande :
+                                <ol>
+                                    <li>taper : nano ~/.bashrc</li>
+                                    <li>Localiser la section PS1 et modifier la variable :<span class="text-info"> PS1='(\[\033[01;31m\]\!\[\033[00m\]) \[\033[01;32m\]\u@:\[\033[01;34m\]\w\[\033[00m\]\$</span>
+                                    <p class="text-decoration-underline text-danger">Cette modification permet d'afficher : le numéro l'historique de la commande entre parenthèses, en rouge puis l'utilisateur suivi de '@' et de ':' , en vert
+                                    ensuit, le répertoire courant en bleu , enfin affiche '#' si l'utilisateur est root et '$' s'il est un utilisateur normal.</p>
+                                        <img src="assets/img/terminale.PNG" alt="img de terminale" class="img-fluid rounded border-light">
+
+                                    </li>
+                                    <li> <span class="fw-bold">Recharger</span> le fichier .bashrc pour que les modifications soient prises en compte : <span class="fw-bold">source ~/.bashrc</span>
+
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="choix-techniques-section mb-5">
+        <h2 class="text-center mb-4"><i class="bi bi-gear-fill"></i> Installation et configuration d’un service web</h2>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="serverInstallation">
+                <button class="accordion-button collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUser2" aria-expanded="false" aria-controls="collapseUser2">
+                    Installation et configuration d’une service web
+                </button>
+            </h3>
+            <div id="collapseUser2" class="accordion-collapse collapse" aria-labelledby="serverInstallation" data-bs-parent="#usersCreationAccordion">
+                <div class="accordion-body">
+                    <p>Nous avons décidé de choisir et d'installer le serveur Apache 2.</p>
+                    <ol>
+                        <li><span class="fw-bold">Installation d'Apache : </span> sudo apt install apache2</li>
+                        <li><span class="fw-bold">Configuration du site web local : </span>
+                            <ul>
+                                <li><span class="fw-bold">Creation</span> d'un repertoire contenat le site web : mkdir monsite.fr </li>
+                                <li><span class="fw-bold">Ajouter</span> les fichiers nécessaires comme <code>index.html</code> <code>.css</code> etc. </li>
+                                <li><span class="fw-bold">Creation</span> d'un lien symbolique pour le repertoire du site web : ln — s /home/yaz/monsite.fr /unDossier/monsite.fr</li>
+                                <li><span class="fw-bold">Déplacer</span> le lien de site dans le répertoire dédié aux sites web (srv) :
+                                    mv /unDossier/monsite.fr /srv/monsite.fr
+                                </li>
+                                <li>
+                                    <span class="fw-bold">Donner </span>les permissions nécessaires (droit d'éxecution) pour le repertoire de travail : sudo chmod 751 /home/yaz
+                                </li>
+                            </ul>
+                        </li>
+                        <li><span class="fw-bold">Mettre en ligne le site web local :</span>
+                            <ul>
+                                <li>
+                                    <span class="fw-bold">Modifier</span> le fichier '000-default.conf' : dans la section ServerAdmin webmaster@localhost, modifier DocumentRoot /var/www/html en DocumentRoot /srv/monsite.fr.
+                                </li>
+                                <li>
+                                    <span class="fw-bold">Modifier</span> le fichier 'apache2.conf' : activer la section <code> &ltDirectory&gt /srv/> </code> en enlevant les commentaires dessus.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!------------------------------------------------------>
+
+    <footer class="container-fluid" id="footer">
+        <div class="container-fluid" id="footer-logo">
+            <a href="https://www.iut.parisdescartes.fr/">
+                <img src="assets/img/Logo_Université_de_Paris.svg-2.png"  alt="Logo IUT">
+            </a>
+        </div>
+        <div class="container-fluid" id="footer-content">
+            <p>&copy; 2025 IUT Paris Rives de Seine. Tout droits r&eacute;serv&eacute;s.</p>
+        </div>
+    </footer>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>
