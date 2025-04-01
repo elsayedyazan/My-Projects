@@ -1,0 +1,75 @@
+<!DOCTYPE html> <!-- Définit le document comme étant en HTML5 -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"> <!-- Définit le jeu de caractères utilisé pour le document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Optimise le rendu pour phone -->
+    <title>Page Exemple HTML/CSS</title> <!-- Titre de la page qui s'affiche dans l'onglet du navigateur -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Lien vers le fichier CSS externe pour le style de la page -->
+</head>
+<body>
+    <header class="main-header"> <!-- En-tête de la page, inclut le titre principal et la navigation -->
+        <h1 class="main-title">MISSION I: </h1> <!-- Titre en haut des liens accueil -->
+		<h2 class="sous-title">Rapport : Création d’une base de données</h2>
+        
+    </header>
+
+    <main> <!-- Section c'est comme une div ou article c'est pour la lisibilité -->
+
+
+
+		<nav>
+			<label for="toggle">☰</label>
+			<input type="checkbox" id="toggle">
+
+			<div class="menu">
+				<a href="index.html">Accueil</a>
+				<a href="mission2.html">Mission II</a>
+				<a href="mission3.html">Mission III</a>
+			</div>
+		</nav>
+
+		<article>
+			<h2>Contexte</h2>
+			<p>L'entreprise KDou propose à ses clients une large gamme de produits de restauration issus du monde entier. Elle sollicite notre équipe pour gérer sa base de données et exploiter ces informations afin d’orienter l’entreprise vers des pratiques plus respectueuses de l’environnement.</p>
+
+			<h2>Bilan des données</h2>
+			<p>La mission 1 consiste à prendre en main la base de données existante, gérée sur Excel.<p>
+			<p>Nous analysons cette base en recherchant diverses informations à l’aide d’un ensemble d’une douzaine de questions. Parmi ces questions, nous identifions des données telles que : </p>
+			</article>
+			<article class="rajouter">
+				<article>
+					 <b><br>Le nombre de clients situés à Nantes,</b>
+					<div class="image">
+						<img src="assets/images/clientnantai.webp" alt="nombre de client nantai" class="image-figure">
+					</div>
+				</article>
+				<article>
+					<b>Ou encore,le nombre de clients situés à Paris.</b>
+					
+					<div class="image">
+						<img src="assets/images/clientparis.png" alt="nombre de cleint parisien" class="image-figure">
+					</div>
+				</article>
+			</article>
+		<article>
+			<h2>Erreurs dans la base</h2>
+			<p>Grâce aux questions, nous nous familiarisons avec la base de données et constatons rapidement qu’elle comporte de nombreuses erreurs.</p>
+			<p>La plupart de ces erreurs proviennent de doublons. Cette mission met en évidence les limites d’Excel pour gérer une base de données de manière optimale.</p> 
+			<p>En effet, une grande partie des erreurs aurait pu être évitée en utilisant un logiciel de gestion de base de données, qui empêche la création de clés primaires en double.</p>
+		</article>
+
+		<article>
+			<h2>Perspectives d’amélioration</h2>
+			<p>La meilleure amélioration envisageable serait de migrer vers un logiciel de gestion de base de données plus adapté, afin d’éliminer une grande partie des doublons.
+
+Cependant, certains doublons, comme "sao-paulo" et "são-paulo", proviennent de fautes d’orthographe ou de variations dans la saisie. Une vérification supplémentaire serait donc nécessaire pour identifier et corriger ces erreurs afin de supprimer efficacement les doublons.</p>
+		</article>
+
+		<footer class="footer"> <!-- Pied de page de la page -->
+			<div id="UP"><a href="https://u-paris.fr/"><img alt="logo Université de Paris" src="https://intranet.u-paris.fr/wp-content/uploads/2022/05/Universite_Paris-Cite-logo.jpeg" width="140"></a></div>
+			<p>© 2024 - Tous droits réservés.</p> <!-- Texte dans le pied de page -->
+		</footer>
+
+	</main>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" >
+		<title> Page Mission 1 </title>
+		<link rel="stylesheet" href="assets/css/style2.css" type="text/css">
+	</head>
+	<body>
+		<header>
+			<h1>MISSION II</h1>
+			<h2>Rapport : Création d’une base de données</h2>
+		</header>	
+		<nav>
+			<label for="toggle">☰</label>
+			<input type="checkbox" id="toggle">
+
+			<div class="menu">
+				<a href="index.html">Accueil</a>
+				<a href="mission1.html">Mission I</a>
+				<a href="mission3.html">Mission III</a>
+				
+			</div>
+		</nav>
+		<main>
+			<section>
+				<h2>Contexte:</h2>
+				<p>L’objectif de cette mission est de commencer à exploiter la base de données de
+					l’entreprise KDou pour pouvoir par la suite avoir des analyses et indicateurs pertinents.</p>	
+			</section>
+			<section class="indicateur">		
+				<article>
+				<h2>Indicateur I:</h2>
+					<div class="tab">
+						<table>
+							<thead>
+								<tr>
+									<th>Enoncé</th>
+									<th>interprétation</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> Quelles sont les catégories de produit vendues par les fournisseurs Singapouriens ?</td>
+									<td>Les catégories de produits vendus
+									par les fournisseurs singapouriens nous
+									donnent un indice précieux sur l’économie du pays,
+									en mettant en évidence ses secteurs de renforcement,
+									ainsi que ses capacités à proposer des produits de haute qualité 
+									ou plus de quantité ,donc moins coûteux pour l’achat. </td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="resultat">
+						<h3>Resultat SQL</h3>
+						<div class="img">
+							<img alt="mission 2, d, resulat" src="assets/images/img-m2-d.png">
+						</div>
+					</div>
+					<div class="code">
+						<h3>Code SQL</h3>
+						<p>SELECT DISTINCT Fournisseur.Pays, Produit.NomProd, Categorie.CodeCateg, Categorie.NomCateg
+						FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg)
+						ON Fournisseur.NoFour = Produit.NoFour
+						WHERE (((Fournisseur.Pays)="Singapour"));</p>
+					</div>
+				</article>
+				<article>
+				<h2>Indicateur II:</h2>
+					<div class="tab">
+						<table>
+							<thead>
+								<tr>
+									<th>Enoncé</th>
+									<th>interprétation</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Quelle estle prix moyen de vente des produits, le prix minimum et le prix maximum.</td>
+									<td>La comparaison des produits en utilisant trois critères (min, moyen, max)
+									nous permet d’obtenir des informations sur les tendances des prix sur le marché
+									en fonction de la demande des commandes. Elle aide également à contrôler la gestion des coûts,
+									en ajustant les montants d'achat dans un domaine ou une catégorie de produits, soit en les augmentant, soit en les réduisan</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="resultat">
+						<h3>Resultat SQL</h3>
+						<div class="img">
+							<img alt="mission 2, j, resulat" src="assets/images/img-m2-j.png">
+						</div>
+					</div>
+					<div class="code">
+						<h3>Code SQL</h3>
+						<p>SELECT Avg(DetailCommande.PrixUnitCli) AS MoyenneDePrixUnitCli,
+						Min(DetailCommande.PrixUnitCli) AS MinDePrixUnitCli,
+						Max(DetailCommande.PrixUnitCli) AS MaxDePrixUnitCli
+						FROM DetailCommande;</p>
+					</div>
+				</article>
+				<article>
+					<h2>Indicateur III:</h2>
+					<div class="tab">
+						<table>
+							<thead>
+								<tr>
+									<th>Enoncé</th>
+									<th>interprétation</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Quels sont les produits conditionnés dans du carton ou dans du verre ?</td>
+									<td>Le choix entre l'emballage en carton ou
+									en verre peut avoir un impact significatif sur les coûts de transport et de stockage.
+									Le carton, étant plus léger et plus facile à empiler,
+									est souvent plus économique pour l'emballage et la logistique.
+									En revanche, le verre, bien que plus lourd et fragile,
+									offre une meilleure protection, notamment pour les produits liquides,
+									en préservant leur qualité et en les protégeant des influences extérieures</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="resultat">
+						<h3>Resultat SQL</h3>
+						<div class="img">
+							<img alt="mission 2, l, resulat" src="assets/images/img-m2-l.png">
+						</div>
+					</div>
+					<div class="code">
+						<h3>Code SQL</h3>
+						<p>SELECT Produit.NomProd, Produit.QteParUnite
+						FROM Produit
+						WHERE (((Produit.QteParUnite) Like "*carton*")) 
+						OR (((Produit.QteParUnite) Like "*verre*"));</p>
+					</div>
+				</article>
+				<article>
+				<h2>Indicateur IV:</h2>
+					<div class="tab">
+						<table>
+							<thead>
+								<tr>
+									<th>Enoncé</th>
+									<th>interprétation</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Dans quelles villes la clientèle est-elle la plus importante ?</td>
+									<td>Un nouveau marché à forte demande offre une opportunité stratégique 
+									pour cibler précisément les consommateurs en élargissant ses offres 
+									ou en adaptant les produits aux besoins spécifiques du marché. 
+									Cela permet non seulement d’optimiser l’adéquation des produits avec les attentes des clients,
+									mais aussi de mieux évaluer la rentabilité à long terme.
+									Cela permet également de déterminer s’il est intéressant de poursuivre l’investissement dans ce marché </td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="resultat">
+						<h3>Resultat SQL</h3>
+						<div class="img">
+							<img alt="mission 2, p, resulat" src="assets/images/img-m2-p.png">
+						</div>
+					</div>
+					<div class="code">
+						<h3>Code SQL</h3>
+						<p>SELECT TOP 3 Client.VilleCli, Count("") AS NBClient
+						FROM Client
+						GROUP BY Client.VilleCli
+						ORDER BY Count("") DESC;</p>
+					</div>
+				</article>
+			</section>	
+		</main>
+		<footer> <!-- Pied de page de la page -->
+			<div>
+				<div class="footer">
+					<a href="https://u-paris.fr/">
+						<img alt="logo Université de Paris" src="https://intranet.u-paris.fr/wp-content/uploads/2022/05/Universite_Paris-Cite-logo.jpeg" width="140">
+					</a>
+				</div>
+			</div>
+			<p>© 2024 - Tous droits réservés.</p> <!-- Texte dans le pied de page -->
+		</footer>
+	</body>
+</html>

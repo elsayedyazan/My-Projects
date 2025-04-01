@@ -1,0 +1,374 @@
+
+
+
+<!DOCTYPE html> <!-- Définit le document comme étant en HTML5 -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8"> <!-- Définit le jeu de caractères utilisé pour le document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Optimise le rendu pour phone -->
+    <title>Page Exemple HTML/CSS</title> <!-- Titre de la page qui s'affiche dans l'onglet du navigateur -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style3.css"> <!-- Lien vers le fichier CSS externe pour le style de la page -->
+  </head>
+  <body>
+
+    <header class="main-header"> <!-- En-tête de la page, inclut le titre principal et la navigation -->
+      <h1 class="main-title">MISSION III: </h1> <!-- Titre en haut des liens accueil -->
+      <h2 class="sous-title">Rapport : Création d’une base de données</h2>
+
+    </header>
+
+    <main> <!-- Section c'est comme une div ou article c'est pour la lisibilité -->
+
+      <nav>
+			<label for="toggle">☰</label>
+			<input type="checkbox" id="toggle">
+
+	<div class="menu">
+      <a href="index.html">Accueil </a>
+	<a href="mission1.html">Mission I</a>
+	<a href="mission2.html">Mission II</a>
+
+	</div>
+	</nav>
+
+      <section id="context">
+        <p>
+          L’objectif de cette troisième mission est d’exploiter la base de données de l’entreprise
+          KDou pour produire des analyses et indicateurs pertinents.
+        </p>
+      </section>
+
+      <article class="indicateurs">
+        <ul>
+          <li> <h2 class="h2">Desserts et boissons</h2>
+            <div class="container">
+              <div class="indica">
+                <figure >
+                  <figcaption> <h3> Indicateur 1</h3> </figcaption>
+                  <ul>
+                    <li>Enoncé : On veut le chiffre d’affaire généré par catégorie desserts ou catégorie</li>
+                    <li>Code sql :
+                      <p>&nbsp;&nbsp;&nbsp;SELECT Sum(Round([PrixUnitCli]*[QteCom]*(1-[Remise]))) AS Chiffredaffaire,</p>
+                      <p>&nbsp;&nbsp;&nbsp;Categorie.CodeCateg, Categorie.NomCateg</p>
+                      <p>&nbsp;&nbsp;&nbsp;FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg)</p>
+                      <p>&nbsp;&nbsp;&nbsp;INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd</p>
+                      <p>&nbsp;&nbsp;&nbsp;GROUP BY Categorie.CodeCateg, Categorie.NomCateg</p>
+                      <p>&nbsp;&nbsp;&nbsp;HAVING (((Categorie.CodeCateg)=3));</p>
+                    </li>
+                    <li class="res"> Resultat :
+                      <img src="assets/images/Capture.PNG" alt="resultat" class="bloc">
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+              <div class="indica">
+              <figure>
+                <figcaption> <h3> Indicateur 2</h3> </figcaption>
+                <ul>
+                 <li>Enoncé : Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître
+                   avec leur pays d’origine.
+                 </li>
+                  <li>Code sql :
+                    <p>SELECT Count(*) AS Expr1</p>
+                    <p>FROM Fournisseur INNER JOIN ((Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Fournisseur.NoFour = Produit.NoFour</p>
+                      <p>WHERE (((Categorie.NomCateg)="boissons") AND ((DetailCommande.PrixUnitCli)>=50)) OR (((Categorie.NomCateg)="Desserts") AND ((DetailCommande.PrixUnitCli)>=50));</p>
+
+                  </li>
+                  <li class="res"> Resultat :
+                    <img src="assets/images/indicateur12.png" alt="resultat" class="bloc">
+                    <img src="assets/images/indicateur122.png" alt="resultat" class="bloc">
+
+                  </li>
+                </ul>
+              </figure>
+              </div>
+            </div>
+          </li>
+
+          <li><h2 class="h2">l’offre de KDou </h2>
+            <div class="container">
+              <div class="indica">
+              <figure>
+                    <figcaption> <h3> Indicateur 1</h3> </figcaption>
+                    <ul>
+                      <li>Enoncé : Combien y –a-t-il de produits non commandés par catégorie ? </li>
+                      <li>Code sql :
+                        <p>SELECT Categorie.NomCateg, Categorie.CodeCateg,
+                          Count(Produit.CodeCateg) AS CompteDeCodeCateg</p>
+                          <p>FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg =
+                          Produit.CodeCateg) LEFT JOIN DetailCommande ON Produit.RefProd =
+                          DetailCommande.RefProd</p>
+                          <p>GROUP BY Categorie.NomCateg, Categorie.CodeCateg,
+                          DetailCommande.RefProd</p>
+                          <p>HAVING (((DetailCommande.RefProd) Is Null));</p>
+                      </li>
+                      <li class="res"> Resultat :
+                        <img src="assets/images/indicateur21.png" alt="resultat" class="bloc">
+                      </li>
+                    </ul>
+                  </figure>
+            </div>
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur 2</h3> </figcaption>
+                  <ul>
+                    <li>Enoncé : Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+                      commandés actuellement ?
+                    </li>
+                    <li>Code sql :
+                      <p>SELECT Produit.RefProd, Produit.NomProd</p>
+                        <p>FROM Produit LEFT JOIN DetailCommande
+                        ON Produit.RefProd =
+                        DetailCommande.RefProd</p>
+                        <p>WHERE (((DetailCommande.RefProd) Is
+                        Null));DetailCommande.PrixUnitCli)>=50));</p>
+
+                    </li>
+                    <li class="res"> Extrait du resultat :
+                      <img src="assets/images/indicateur22.png" alt="resultat" class="bloc">
+
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+            </div>
+          </li>
+
+          <li><h2 class="h2"> les provenances des produits </h2>
+            <div class="container">
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur 1</h3> </figcaption>
+                  <ul>
+                    <li>Enoncé : Pour l’Allemagne pays proche, quels sont les desserts ou boissons vendus à moins
+                      de 100 euros ? </li>
+                    <li> Code sql :
+                      <p>SELECT Produit.PrixUnit, Produit.NomProd</p>
+                      <p>FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON
+                        Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour =
+                        Produit.NoFour </p>
+                      <p>WHERE (((Produit.PrixUnit)<100) AND
+                        ((Categorie.NomCateg)="Boissons") AND
+                        ((Fournisseur.Pays)="Allemagne")) AND (((Produit.PrixUnit)<100) AND
+                        ((Categorie.NomCateg)="Desserts") AND
+                        ((Fournisseur.Pays)="Allemagne"));</p>
+                    </li>
+                    <li class="res"> Resultat :
+                      <img src="assets/images/indicateur31.png" alt="resultat" class="bloc">
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur 2</h3> </figcaption>
+                  <ul>
+                    <li>Enoncé : Y en a-t-il qui vendent les deux boissons et desserts ?
+                    </li>
+                    <li>Code sql :
+                      <p>ELECT DISTINCT Fournisseur.NoFour</p>
+                      <p>FROM Categorie AS C1, Produit AS P1, Fournisseur AS F1, Categorie,
+                        Fournisseur, Produit</p>
+                      <p>WHERE (((Categorie.NomCateg)="Boissons") AND
+                        ((C1.NomCateg)="Desserts") AND
+                        ((Fournisseur.NoFour)=[Produit].[NoFour]) AND
+                        ((Categorie.CodeCateg)=[Produit].[CodeCateg]) AND
+                        ((F1.NoFour)=[Fournisseur].[NoFour]) AND
+                        ((C1.CodeCateg)=[P1].[CodeCateg]) AND ((P1.NoFour)=[F1].[NoFour]));
+                      </p>
+
+                    </li>
+                    <li class="res"> Resultat :
+                      <img src="assets/images/indicateur32.png" alt="resultat" class="bloc">
+
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+            </div>
+          </li>
+
+          <li><h2 class="h2"> les provenances des produits </h2>
+            <div class="container">
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur 1</h3> </figcaption>
+                  <ul>
+                    <li>Enoncé : Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils ?  </li>
+                    <li> Code sql :
+                      <p>SELECT DISTINCT Commande.CodeCli, Client.ContactCli </p>
+                      <p>FROM Client INNER JOIN (Commande INNER JOIN DetailCommande ON
+                        Commande.NoCom = DetailCommande.NoCom) ON Client.CodeCli =
+                        Commande.CodeCli </p>
+                      <p>WHERE (((DetailCommande.Remise)<25/100));</p>
+                    </li>
+                    <li class="res"> Extrait du resultat :
+                      <img src="assets/images/indicateur41.png" alt="resultat" class="bloc">
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+
+              <div class="indica">
+                  <figure>
+                    <figcaption> <h3> Indicateur 2</h3> </figcaption>
+                    <ul>
+                      <li>Enoncé : Quels produits n’ont eu que des remises de 10% ou 20%  ou pas de remise ?
+                      </li>
+                      <li>Code sql :
+                        <p>&nbspSELECT DISTINCT Produit.NomProd</p>
+                        <p>&nbspFROM Produit INNER JOIN DetailCommande ON Produit.RefProd =
+                          DetailCommande.RefProd </p>
+                        <p>&nbspWHERE (((DetailCommande.Remise)=20/100)) OR
+                          (((DetailCommande.Remise)=10/100)) OR
+                          (((DetailCommande.Remise)=0))</p>
+                        <p>ORDER BY Produit.NomProd;</p>
+                      </li>
+                      <li class="res"> Extrait du resultat :
+                        <img src="assets/images/indicateur42.png" alt="resultat" class="bloc">
+                      </li>
+                    </ul>
+                  </figure>
+              </div>
+            </div>
+          </li>
+<!--------------------------------------------------INDICATEUR PERSO-------------------------->
+          <li><h2 class="h2"> Nos indicateurs </h2>
+            <div class="container">
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur Abel </h3> </figcaption>
+                  <ul>
+                    <li>La requête que j’ai choisie montre les quantités vendues par un fournisseur et la
+                      moyenne de prix unitaire de ce fournisseur. Cette requête permet à l’entreprise de voir
+                      c’est fournisseur les plus rentable, peut-être dans l’objective de fournir plus de nos
+                      produit chez eux ou de les garder comme fournisseur le plus longtemps possible.
+                      la requete selectione les numero des fournisseur dans la table fournisseur, la somme
+                      des quantité des commande et la moyenne du prix des commande, les table
+                      Fournisseur et Produit, puis on regroupe par fournisseur pour éviter les doublon.   </li>
+                    <li> Code sql :
+                      <p>SELECT Fournisseur.NoFour, Sum(DetailCommande.QteCom) AS
+                        ["quantité vendu"], Avg(DetailCommande.PrixUnitCli) AS ["prix de vente
+                        moyen"]  </p>
+                      <p>FROM Fournisseur INNER JOIN (Produit INNER JOIN DetailCommande ON
+                        Produit.RefProd = DetailCommande.RefProd) ON Fournisseur.NoFour =
+                        Produit.NoFour  </p>
+                      <p>GROUP BY Fournisseur.NoFour;</p>
+                    </li>
+                    <li class="res"> Extrait du resultat :
+                      <img src="assets/images/indicateurAbel.png" alt="resultat" class="bloc">
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur Yazan </h3> </figcaption>
+                  <ul>
+                    <li>La requête estime la moyenne ainsi que l'écart type de la livraison en soustrayant la
+                      date "ALivrerAvant" de la date de la commande "DateCom". Cela nous donne une
+                      image sur la qualité de la livraison mais aussi sur sa consistance, ceci peut être
+                      intéressant pour kdou en cas de volonté de création programme de fidélité
+                      garantissant une durée de livraison (comme Amazon prime où livraison en 24 est
+                      garantie) , pour réaliser ce genre de programme il faut que l’écart type soit
+                      minimale(proche de zéro) , puis on prend la moyenne comma duré de la livraison :
+                      <figure class="">
+                        <figcaption> Certaines commandes n’ont pas une date ALivrerAvant: </figcaption>
+                        <img src="assets/images/pro2.jpg" alt="resultat" class="inline">
+                      </figure>
+                      <figure class="">
+                        <figcaption> Certaines commandes ont une date de livraison avant la date de la commande: </figcaption>
+                        <img src="assets/images/pro1.jpg" alt="resultat" class="inline">
+                      </figure>
+                    </li>
+                    <li>Code sql :
+                      <p>SELECT Avg([ALivrerAvant]-[DateCom]) AS Moyenne, StDev([ALivrerAvant]-[DateCom]) AS [Ecart Type] </p>
+                      <p>FROM Commande )</p>
+                      <p>HAVING((([ALivrerAvant]-[DateCom])>=0 And ([ALivrerAvant][DateCom])>=0)); </p>
+
+                    </li>
+                    <li class="res"> Resultat :
+                      <img src="assets/images/indicateurYazan.PNG" alt="resultat" class="bloc">
+
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+            </div>
+            <div class="container">
+              <div class="indica">
+                <figure>
+                  <figcaption> <h3> Indicateur Hugo</h3> </figcaption>
+                  <ul>
+                    <li>Objectif : Identifier les produits ayant les plus bas prix par catégorie existant pour chaque fournisseur
+                      <ul>
+                        <li>Intérêt : Cela permet à KDou de sélectionner les fournisseurs les plus compétitifs par catégorie de produit,
+                          en offrant plusieurs types de produits et en grand quantité des produits à bas prix pour attirer plus de monde
+                          qui consomme beaucoup plus que les autres entreprises donc optimiser de son offre. </li>
+                        <li>Cette requête renverra les numéros fournisseur et les sociétés fournisseurs, le nom de produits et les produits à prix bas par code et nom de catégorie pour chaque fournisseur </li>
+                      </ul>
+                    </li>
+                    <li> Code sql :
+                      <p>SELECT Fournisseur.NoFour, Fournisseur.Societe, Min(Produit.NomProd)
+                        AS MinDeNomProd, Min(Produit.PrixUnit) AS MinDePrixUnit, Categorie.CodeCateg, Categorie.NomCateg
+                      </p>
+                      <p>FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON
+                        Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour = Produit.NoFour
+                      </p>
+                      <p>GROUP BY Fournisseur.NoFour, Fournisseur.Societe, Categorie.CodeCateg, Categorie.NomCateg; </p>
+                    </li>
+                    <li class="res" > Extrait du resultat :
+                      <div class="img-container">
+                        <img src="assets/images/indicateurHugo1.png" alt="resultat" >
+                        <img src="assets/images/indicateurHugo2.png" alt="resultat" >
+                        <img src="assets/images/indicateurHugo3.png" alt="resultat" >
+                      </div>
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+
+              <div class="indica" id="moad">
+                <figure >
+                  <figcaption> <h3> Indicateur Moad</h3> </figcaption>
+                  <ul>
+                    <li>cette requête est interessante a mes yeux dans le contexte du respect de
+                      l’environnement, En supprimant les pays trop loins chez qui l'entreprise ne commande
+                      pas bcp  -elle sert à trouver les fournisseurs qui ont peu de produits. Elle relie les tables
+                      Fournisseur et Produit pour compter le nombre de produits par fournisseur. Ensuite,
+                      elle filtre pour ne garder que ceux qui ont cinq produits ou moins. Enfin, les résultats
+                      sont triés du plus petit au plus grand nombre de produits, ce qui permet de voir
+                      facilement les fournisseurs avec le moins d'offres.
+                    </li>
+                    <li>Code sql :
+                      <p>SELECT Fournisseur.Societe, COUNT(Produit.RefProd) AS
+                        NombreDeProduits </p>
+                      <p>FROM Fournisseur LEFT JOIN Produit ON Fournisseur.NoFour =
+                        Produit.NoFour</p>
+                      <p>GROUP BY Fournisseur.Societe</p>
+                      <p>HAVING COUNT(Produit.RefProd) <= 5 </p>
+                      <p>ORDER BY COUNT(Produit.RefProd); </p>
+
+                    </li>
+                    <li class="res"> Extrait du resultat :
+                      <img src="assets/images/indicateurMoad.png" alt="resultat" class="bloc">
+
+                    </li>
+                  </ul>
+                </figure>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </article>
+    </main>
+
+    <footer class="footer"> <!-- Pied de page de la page -->
+      <div id="UP"><a href="https://u-paris.fr/"><img alt="logo Université de Paris" src="https://intranet.u-paris.fr/wp-content/uploads/2022/05/Universite_Paris-Cite-logo.jpeg" width="140"></a></div>
+      <p>© 2024 - Tous droits réservés.</p> <!-- Texte dans le pied de page -->
+    </footer>
+  </body>
+</html>
