@@ -6,7 +6,7 @@ Téléchargez chaque projet individuellement ou consultez sa description :
 
 ### Création BD
 
-- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Création BD.zip)
+- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Création_BD.zip)
 - [Voir le dossier sur GitHub](./Création BD)
 
 **Résumé du projet :**
@@ -151,7 +151,7 @@ Bonne exploration et **place aux requêtes !** 🚀
 
 ### Implémentation d'un besoin client
 
-- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Implémentation d'un besoin client.zip)
+- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Implémentation_d'un_besoin_client.zip)
 - [Voir le dossier sur GitHub](./Implémentation d'un besoin client)
 
 **Résumé du projet :**
@@ -263,7 +263,7 @@ Le respect des **spécifications** et des **délais** sera crucial pour la réus
 
 ### Installation d'un poste pour le développement
 
-- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Installation d'un poste pour le développement.zip)
+- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/Installation_d'un_poste_pour_le_développement.zip)
 - [Voir le dossier sur GitHub](./Installation d'un poste pour le développement)
 
 **Résumé du projet :**
@@ -445,7 +445,7 @@ _Pas de README spécifique pour ce projet._
 
 ### SAE Exploiatation BD
 
-- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/SAE Exploiatation BD.zip)
+- [Télécharger le ZIP](https://github.com/elsayedyazan/My-Projects/releases/latest/download/SAE_Exploiatation_BD.zip)
 - [Voir le dossier sur GitHub](./SAE Exploiatation BD)
 
 **Résumé du projet :**
