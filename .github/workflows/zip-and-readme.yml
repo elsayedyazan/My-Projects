@@ -19,9 +19,9 @@ jobs:
         run: sudo apt-get update && sudo apt-get install zip gh -y
 
       - name: Créer un dossier pour les ZIP
-        run: mkdir zips
+        run: mkdir -p zips
 
-      - name: Archiver chaque dossier de projet
+      - name: Archiver chaque dossier de projet (espaces remplacés)
         id: zip_projects
         run: |
           rm -f project_index.txt
@@ -30,8 +30,9 @@ jobs:
             [[ "$dir" == ".github/" ]] && continue
             [[ "$dir" == "scripts/" ]] && continue
             project="${dir%/}"
-            zip -r "zips/$project.zip" "$project"
-            # Recherche d'un fichier Readme (nommage flexible, casse insensible)
+            zipname=$(echo "$project" | tr ' ' '_')
+            zip -r "zips/$zipname.zip" "$project"
+            # Recherche d'un fichier Readme (nom flexible)
             readme_path=""
             for f in "$project"/[Rr][Ee][Aa][Dd][Mm][Ee]*; do
               if [[ -f "$f" ]]; then
@@ -39,7 +40,7 @@ jobs:
                 break
               fi
             done
-            echo "$project|$readme_path" >> project_index.txt
+            echo "$project|$zipname|$readme_path" >> project_index.txt
           done
 
       - name: Supprimer la release 'latest' (si existe)
@@ -59,7 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Générer le README racine avec liens valides
+      - name: Générer le README racine avec les bons liens ZIP
         id: generate_readme
         run: |
           echo "# Mes Projets" > README.md
@@ -69,10 +70,10 @@ jobs:
           echo "## Liste des projets" >> README.md
           echo "" >> README.md
 
-          while IFS="|" read -r project readme_path; do
+          while IFS="|" read -r project zipname readme_path; do
             echo "### $project" >> README.md
             echo "" >> README.md
-            echo "- [Télécharger le ZIP](https://github.com/${{ github.repository }}/releases/latest/download/$project.zip)" >> README.md
+            echo "- [Télécharger le ZIP](https://github.com/${{ github.repository }}/releases/latest/download/$zipname.zip)" >> README.md
             echo "- [Voir le dossier sur GitHub](./$project)" >> README.md
             if [[ -n "$readme_path" && -f "$readme_path" ]]; then
               echo "" >> README.md
