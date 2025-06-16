@@ -91,7 +91,7 @@ jobs:
               echo "_Pas de README spécifique pour ce projet._" >> README.md
             fi
             echo "" >> README.md
-            echo "---" >> README.md
+            echo '<hr style="height:4px;border-width:0;color:red;background-color:red">' >> README.md
             echo "" >> README.md
           done < project_index.txt
 
