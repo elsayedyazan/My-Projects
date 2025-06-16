@@ -28,11 +28,15 @@ jobs:
             [[ "$dir" == "scripts/" ]] && continue
             project="${dir%/}"
             zip -r "zips/$project.zip" "$project"
-            if [[ -f "$project/README.md" ]]; then
-              echo "$project|$project/README.md" >> project_index.txt
-            else
-              echo "$project|" >> project_index.txt
-            fi
+            # Recherche d'un fichier Readme (nommage flexible, casse insensible)
+            readme_path=""
+            for f in "$project"/[Rr][Ee][Aa][Dd][Mm][Ee]*; do
+              if [[ -f "$f" ]]; then
+                readme_path="$f"
+                break
+              fi
+            done
+            echo "$project|$readme_path" >> project_index.txt
           done
 
       - name: Générer le README racine
