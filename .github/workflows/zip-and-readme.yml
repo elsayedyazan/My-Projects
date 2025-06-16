@@ -91,7 +91,7 @@ jobs:
               echo "_Pas de README spécifique pour ce projet._" >> README.md
             fi
             echo "" >> README.md
-            echo '________________________ >> README.md
+            echo '________________________' >> README.md
             echo "🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩" >> README.md
             echo '________________________' >> README.md
             echo "" >> README.md
