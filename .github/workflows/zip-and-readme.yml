@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  
 
 jobs:
   zip-projects-and-generate-readme:
@@ -42,7 +43,17 @@ jobs:
             echo "$project|$readme_path" >> project_index.txt
           done
 
-      - name: Générer le README racine
+      - name: Publier les ZIP dans la Release (latest)
+        id: release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Dernière version des projets (ZIP individuels)
+          files: zips/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Générer le README racine avec liens valides
         id: generate_readme
         run: |
           echo "# Mes Projets" > README.md
@@ -75,16 +86,7 @@ jobs:
             echo "" >> README.md
           done < project_index.txt
 
-      - name: Publier les ZIP dans la Release (latest)
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest
-          name: Dernière version des projets (ZIP individuels)
-          files: zips/*.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit et push le README généré (optionnel)
+      - name: Commit et push le README généré (après la Release)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
