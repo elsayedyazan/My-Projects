@@ -78,12 +78,14 @@ jobs:
             if [[ -n "$readme_path" && -f "$readme_path" ]]; then
               echo "" >> README.md
               echo "**Résumé du projet :**" >> README.md
-              head -n 10 "$readme_path" >> README.md
-              echo "" >> README.md
-              echo "<details><summary>Voir le README complet</summary>" >> README.md
-              echo "" >> README.md
-              cat "$readme_path" >> README.md
-              echo "</details>" >> README.md
+              head -n 5 "$readme_path" >> README.md
+              if [ $(wc -l < "$readme_path") -gt 5 ]; then
+                echo "" >> README.md
+                echo "<details><summary>Voir le README complet</summary>" >> README.md
+                echo "" >> README.md
+                tail -n +6 "$readme_path" >> README.md
+                echo "</details>" >> README.md
+              fi
             else
               echo "" >> README.md
               echo "_Pas de README spécifique pour ce projet._" >> README.md
