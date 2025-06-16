@@ -16,18 +16,8 @@ Téléchargez chaque projet individuellement ou consultez sa description :
 Cette SAÉ a pour but de **croiser les compétences en bases de données relationnelles et en statistiques descriptives**.  
 À partir de tickets de caisse réels d’une supérette située à **Caen**, il faut :
 
-1. **Modéliser** les données (MCD) et envisager leurs extensions futures ;  
-2. **Exploiter** le jeu de données au moyen de requêtes SQL et d’analyses statistiques (Python / Excel).
-
-Le travail est évalué dans le cadre du **DST de la ressource R2.06 (semaine du 3 juin 2025)**.  
-
 <details><summary>Voir le README complet</summary>
 
-# 🏪 SAÉ 2‑04 – Exploitation statistique d’une base de données (Supérette de Caen)
-
-## 📖 Introduction
-Cette SAÉ a pour but de **croiser les compétences en bases de données relationnelles et en statistiques descriptives**.  
-À partir de tickets de caisse réels d’une supérette située à **Caen**, il faut :
 
 1. **Modéliser** les données (MCD) et envisager leurs extensions futures ;  
 2. **Exploiter** le jeu de données au moyen de requêtes SQL et d’analyses statistiques (Python / Excel).
@@ -160,18 +150,8 @@ Bonne exploration et **place aux requêtes !** 🚀
 ## 📌 Introduction
 Ce projet consiste à développer un **système de gestion des absences** pour les étudiants inscrits en **Bachelor Universitaire de Technologie (BUT)**. 
 
-**Objectif :**
-- Surveiller et gérer les absences des étudiants.
-- Assurer un suivi rigoureux des absences non justifiées.
-- Maintenir l'intégrité académique.
-
 
 <details><summary>Voir le README complet</summary>
-
-# 🎓 Projet de Gestion des Absences - BUT
-
-## 📌 Introduction
-Ce projet consiste à développer un **système de gestion des absences** pour les étudiants inscrits en **Bachelor Universitaire de Technologie (BUT)**. 
 
 **Objectif :**
 - Surveiller et gérer les absences des étudiants.
@@ -272,18 +252,8 @@ Repo de la SAE System Linux + HTML/CSS
 
 ![PROGRESS BAR](https://github.com/rp-hkzo/sae_system_A1S1P2/blob/751c30d9757d89775341cfa2c23adf8de4c74dc1/PROGRESS%20BAR.png)
 
-Architecture du site :
-
-📁assets                 (source files)  
-  |--------> 📁img       (png,jpg files)  
-  |--------> 📁vid       (video files)  
 
 <details><summary>Voir le README complet</summary>
-
-# sae_system_A1S1P2
-Repo de la SAE System Linux + HTML/CSS
-
-![PROGRESS BAR](https://github.com/rp-hkzo/sae_system_A1S1P2/blob/751c30d9757d89775341cfa2c23adf8de4c74dc1/PROGRESS%20BAR.png)
 
 Architecture du site :
 
@@ -325,18 +295,8 @@ Architecture du site :
 ## 🎯 Objectif du projet
 Cette application VB.NET propose une adaptation solitaire et chronométrée du jeu **Memory**. Elle met à l’épreuve la mémoire visuelle et la rapidité : le joueur dispose d’un temps limité pour retrouver le plus grand nombre possible de « carrés » (groupes de quatre cartes identiques).
 
----
-
-## 🗺️ Fonctionnalités principales
-| Domaine | Fonctionnalités | Détails |
-|---------|----------------|---------|
 
 <details><summary>Voir le README complet</summary>
-
-# 🧠 SAÉ 2.01 – Variante numérique du jeu Memory
-
-## 🎯 Objectif du projet
-Cette application VB.NET propose une adaptation solitaire et chronométrée du jeu **Memory**. Elle met à l’épreuve la mémoire visuelle et la rapidité : le joueur dispose d’un temps limité pour retrouver le plus grand nombre possible de « carrés » (groupes de quatre cartes identiques).
 
 ---
 
@@ -454,18 +414,8 @@ _Pas de README spécifique pour ce projet._
 ## 📌 Présentation du Projet
 Ce projet vise à exploiter les données de l'entreprise **KDou** pour produire des analyses et des indicateurs pertinents. 
 
-**À propos de KDou :**
-KDou est une entreprise commerciale spécialisée dans la vente de produits alimentaires d'épicerie fine ou typiques, achetés à des fournisseurs du monde entier. 
-
-**Objectif :**
-- Aider KDou à mieux comprendre ses données
 
 <details><summary>Voir le README complet</summary>
-
-# 📊 Projet d'Exploitation de Base de Données - KDou
-
-## 📌 Présentation du Projet
-Ce projet vise à exploiter les données de l'entreprise **KDou** pour produire des analyses et des indicateurs pertinents. 
 
 **À propos de KDou :**
 KDou est une entreprise commerciale spécialisée dans la vente de produits alimentaires d'épicerie fine ou typiques, achetés à des fournisseurs du monde entier. 
