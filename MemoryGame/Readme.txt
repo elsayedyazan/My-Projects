@@ -42,7 +42,7 @@ MemoryGame/
 1. **Pré‑requis** : Windows 10 +, .NET Framework ≥ 4.8, Visual Studio 2022.  
 2. **Cloner le dépôt** :
 ```bash
-git clone <url_du_projet>
+git clone https://github.com/elsayedyazan/My-Projects.git
 cd MemoryGame
 ```
 3. **Ouvrir `MemoryGame.sln`** dans Visual Studio.  
