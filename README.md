@@ -137,7 +137,7 @@ Une attention particulière est portée à la qualité de la modélisation, à l
 Bonne exploration et **place aux requêtes !** 🚀
 </details>
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### Implémentation d'un besoin client
 
@@ -239,7 +239,7 @@ Le respect des **spécifications** et des **délais** sera crucial pour la réus
 
 </details>
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### Installation d'un poste pour le développement
 
@@ -282,7 +282,7 @@ Architecture du site :
 ![Website Map](https://github.com/user-attachments/assets/d42d3860-856f-4ae6-87d8-40b07a788ce0)
 </details>
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### MemoryGame
 
@@ -392,7 +392,7 @@ Pour toute question technique, contacter l’étudiant responsable du projet v
 *Dernière mise à jour : 16 juin 2025*
 </details>
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### MiniProj_SimulationChenille
 
@@ -401,7 +401,7 @@ Pour toute question technique, contacter l’étudiant responsable du projet v
 
 _Pas de README spécifique pour ce projet._
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### SAE Exploiatation BD
 
@@ -507,7 +507,7 @@ Ce projet aidera **KDou** à mieux comprendre ses données et à prendre des dé
 📢 **Prêt à optimiser les données de KDou !** 🚀
 </details>
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
 ### octo_verso
 
@@ -516,5 +516,5 @@ Ce projet aidera **KDou** à mieux comprendre ses données et à prendre des dé
 
 _Pas de README spécifique pour ce projet._
 
----
+<hr style="height:4px;border-width:0;color:red;background-color:red">
 
