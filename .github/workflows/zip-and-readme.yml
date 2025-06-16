@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  
 
 jobs:
   zip-projects-and-generate-readme:
@@ -16,8 +15,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Installer zip
-        run: sudo apt-get install zip
+      - name: Installer zip et gh
+        run: sudo apt-get update && sudo apt-get install zip gh -y
 
       - name: Créer un dossier pour les ZIP
         run: mkdir zips
@@ -42,6 +41,13 @@ jobs:
             done
             echo "$project|$readme_path" >> project_index.txt
           done
+
+      - name: Supprimer la release 'latest' (si existe)
+        run: |
+          gh release delete latest -y || true
+          git tag -d latest || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publier les ZIP dans la Release (latest)
         id: release
