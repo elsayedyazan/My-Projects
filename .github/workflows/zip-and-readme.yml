@@ -1,0 +1,86 @@
+name: Zipper chaque projet et générer le README racine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  zip-projects-and-generate-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Installer zip
+        run: sudo apt-get install zip
+
+      - name: Créer un dossier pour les ZIP
+        run: mkdir zips
+
+      - name: Archiver chaque dossier de projet
+        id: zip_projects
+        run: |
+          rm -f project_index.txt
+          for dir in */ ; do
+            [[ "$dir" == "zips/" ]] && continue
+            [[ "$dir" == ".github/" ]] && continue
+            [[ "$dir" == "scripts/" ]] && continue
+            project="${dir%/}"
+            zip -r "zips/$project.zip" "$project"
+            if [[ -f "$project/README.md" ]]; then
+              echo "$project|$project/README.md" >> project_index.txt
+            else
+              echo "$project|" >> project_index.txt
+            fi
+          done
+
+      - name: Générer le README racine
+        id: generate_readme
+        run: |
+          echo "# Mes Projets" > README.md
+          echo "" >> README.md
+          echo "Téléchargez chaque projet individuellement ou consultez sa description :" >> README.md
+          echo "" >> README.md
+          echo "## Liste des projets" >> README.md
+          echo "" >> README.md
+
+          while IFS="|" read -r project readme_path; do
+            echo "### $project" >> README.md
+            echo "" >> README.md
+            echo "- [Télécharger le ZIP](https://github.com/${{ github.repository }}/releases/latest/download/$project.zip)" >> README.md
+            echo "- [Voir le dossier sur GitHub](./$project)" >> README.md
+            if [[ -n "$readme_path" && -f "$readme_path" ]]; then
+              echo "" >> README.md
+              echo "**Résumé du projet :**" >> README.md
+              head -n 10 "$readme_path" >> README.md
+              echo "" >> README.md
+              echo "<details><summary>Voir le README complet</summary>" >> README.md
+              echo "" >> README.md
+              cat "$readme_path" >> README.md
+              echo "</details>" >> README.md
+            else
+              echo "" >> README.md
+              echo "_Pas de README spécifique pour ce projet._" >> README.md
+            fi
+            echo "" >> README.md
+            echo "---" >> README.md
+            echo "" >> README.md
+          done < project_index.txt
+
+      - name: Publier les ZIP dans la Release (latest)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Dernière version des projets (ZIP individuels)
+          files: zips/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit et push le README généré (optionnel)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Mise à jour automatique du README racine avec liens ZIP" || echo "Pas de changements"
+          git push
